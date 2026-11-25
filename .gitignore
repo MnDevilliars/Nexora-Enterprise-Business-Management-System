@@ -1,0 +1,51 @@
+# ==========================================
+# Nexora – Enterprise Business Management System
+# ==========================================
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+.idea/
+*.iml
+.vscode/
+!.vscode/extensions.json
+.classpath
+.project
+.settings/
+
+# Environment & Secrets (NEVER commit real secrets)
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+*.pem
+*.key
+*.p12
+*.jks
+
+# Backend (Java / Maven / Spring Boot)
+backend/target/
+backend/build/
+backend/*.log
+backend/logs/
+!backend/.mvn/wrapper/maven-wrapper.jar
+
+# Frontend (Angular / Node)
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/coverage/
+frontend/*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Docker & Infrastructure temporary files
+infrastructure/docker/pgdata/
+*.pid
+

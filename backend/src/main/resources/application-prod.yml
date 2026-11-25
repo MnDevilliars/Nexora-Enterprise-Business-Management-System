@@ -1,0 +1,19 @@
+# Production profile: strictly disables API docs UI, debug logging, and insecure dev fallbacks.
+spring:
+  datasource:
+    password: ${DB_PASSWORD}
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
+
+nexora:
+  cors:
+    allowed-origins: ${NEXORA_CORS_ALLOWED_ORIGINS}
+
+logging:
+  level:
+    root: INFO
+    com.nexora: INFO

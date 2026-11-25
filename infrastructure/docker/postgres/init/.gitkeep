@@ -1,0 +1,3 @@
+# Placeholder so git tracks the optional PostgreSQL container initialization directory.
+# Application schema migrations belong in backend/src/main/resources/db/migration (Flyway), not here.
+

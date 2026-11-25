@@ -1,0 +1,27 @@
+# Single canonical env file: backend/.env (copied from backend/.env.example)
+# Run from repo root: docker compose --env-file backend/.env up -d postgres
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: nexora-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:-nexora}
+      POSTGRES_USER: ${DB_USER:-nexora_app}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in backend/.env before starting Docker Compose}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - nexora_pgdata:/var/lib/postgresql/data
+      - ./infrastructure/docker/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-nexora_app} -d ${DB_NAME:-nexora}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  nexora_pgdata:
+    driver: local
+
